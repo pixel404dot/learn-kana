@@ -1,83 +1,3 @@
-@font-face {
-  font-family: "Belanosima";
-  src: local("Belanosima"),
-    url("./fonts/Belanosima/Belanosima-SemiBold.ttf") format("truetype");
-  font-weight: bold;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "KleeOne";
-  src: local("KleeOne"),
-    url("./fonts/Klee_One/KleeOne-Regular.ttf") format("truetype");
-  font-weight: bold;
-  font-display: swap;
-}
-
-
-@font-face {
-  font-family: "Kaisei_Tokumin";
-  src: local("Kaisei_Tokumin"),
-    url("./fonts/Kaisei_Tokumin/KaiseiTokumin-Regular.ttf") format("truetype");
-  font-weight: bold;
-  font-display: block;
-}
-
-@font-face {
-  font-family: "Noto_Serif_JP";
-  src: local("Noto_Serif_JP"),
-    url("./fonts/Noto_Serif_JP/NotoSerifJP-Regular.otf") format("opentype");
-  font-weight: bold;
-  font-display: block;
-}
-
-@font-face {
-  font-family: "Shippori_Mincho";
-  src: local("Shippori_Mincho"),
-    url("./fonts/Shippori_Mincho/ShipporiMincho-Regular.ttf") format("truetype");
-  font-weight: bold;
-  font-display: block;
-}
-
-@font-face {
-  font-family: "Tsukimi_Rounded";
-  src: local("Tsukimi_Rounded"),
-    url("./fonts/Tsukimi_Rounded/TsukimiRounded-Regular.ttf") format("truetype");
-  font-weight: bold;
-  font-display: block;
-}
-
-@font-face {
-  font-family: "YokoMoji";
-  src: local("YokoMoji"),
-    url("./fonts/YokoMoji/yokomoji.otf") format("opentype");
-  font-weight: bold;
-  font-display: block;
-}
-
-@font-face {
-  font-family: "LeftHanded";
-  src: local("freefont_lefthanded"),
-    url("./fonts/freefont_lefthanded/freefont_lefthanded.otf") format("opentype");
-  font-weight: bold;
-  font-display: block;
-}
-
-@font-face {
-  font-family: "JiyunoTsubasa";
-  src: local("JiyunoTsubasa"),
-    url("./fonts/JiyunoTsubasa/JiyunoTsubasa.ttf") format("truetype");
-  font-weight: bold;
-  font-display: block;
-}
-
-@font-face {
-  font-family: "YujiBoku";
-  src: local("Yuji_Boku"),
-    url("./fonts/Yuji_Boku/YujiBoku-Regular.ttf") format("truetype");
-  font-weight: bold;
-  font-display: block;
-}
 
 
 
@@ -97,7 +17,7 @@ body {
   font-weight: bold;
   user-select: none;
   text-align: center;
-  color: #ff9a3c;
+  color: var(--fg);
   transition: all 0.3s ease;
   font-family: 'Courier New', monospace;
 }
@@ -137,7 +57,7 @@ body {
 
 .in-game-exit-button {
   text-decoration: none; 
-  color: #ff9a3c;
+  color: var(--fg);
   font-size: 2.5em;
   margin-right: 14px;
   cursor: pointer;
@@ -204,7 +124,7 @@ body {
   font-size: 13vh;
   background: transparent;
   width: 90vw;
-  color: #ff9a3c;
+  color: var(--fg);
   padding: 5px;
   overflow: hidden;
   height: 14vh;
@@ -224,7 +144,7 @@ body {
   float: left;
   width: 3px;
   height: 11.5vh;
-  background: #ff9a3c;
+  background: var(--fg);
   margin-right: -4px;
   margin-left: -2px;
   align-self: center;
@@ -351,16 +271,16 @@ body {
 .inGameUserGameScoreWindow_buttons button{
   background: transparent;
   border-style: solid;
-  border-color: #ff9a3c;
+  border-color: var(--fg);
   border-radius: 10px;
   padding: 10px;
   font-size: 2.5vh;
-  color: #ff9a3c;
+  color: var(--fg);
   font-weight: bold;
   cursor: pointer;
 }
 .inGameUserGameScoreWindow_buttons button:hover{
-  background-color: #ff9a3c54;
+  background-color: color-mix(in srgb, var(--fg) 33%, transparent);
 }
 
 .hidden-text-for-font-loading {
@@ -378,37 +298,37 @@ body {
 }
 
 .font-Belanosima{
-  font-family: Belanosima;
+  font-family: Belanosima, sans-serif;
 }
 .font-KleeOne{
-  font-family: KleeOne;
+  font-family: "Klee One", serif;
 }
 .font-Kaisei_Tokumin{
-  font-family: Kaisei_Tokumin;
+  font-family: "Kaisei Tokumin", serif;
 }
 .font-Noto_Serif_JP{
-  font-family: Noto_Serif_JP;
+  font-family: "Noto Serif JP", serif;
 }
 .font-Shippori_Mincho{
-  font-family: Shippori_Mincho;
+  font-family: "Shippori Mincho", serif;
 }
 .font-Tsukimi_Rounded{
-  font-family: Tsukimi_Rounded;
+  font-family: "Tsukimi Rounded", sans-serif;
 }
 .font-YokoMoji{
-  font-family: YokoMoji;
+  font-family: "Klee One", serif;
 }
 .font-LeftHanded{
-  font-family: LeftHanded;
+  font-family: "Klee One", serif;
 }
 .font-JiyunoTsubasa{
-  font-family: JiyunoTsubasa;
+  font-family: "Klee One", serif;
 }
 .font-YujiBoku{
-  font-family: YujiBoku;
+  font-family: "Yuji Boku", serif;
 }
 .font-forceDefault{
-  font-family: Belanosima !important;
+  font-family: Belanosima, sans-serif !important;
 }
 
 .animation-wrong1{

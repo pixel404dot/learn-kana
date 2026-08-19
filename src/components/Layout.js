@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 export default function Layout() {
     const location = useLocation();
@@ -7,8 +8,6 @@ export default function Layout() {
     useEffect(() => {
         if (window.umami) {
             const currentPath = location.pathname;
-            // Ensure the path tracked always starts with /learn-kana
-            // This fixes the issue where Cloudflare Pages reports as / but GitHub Pages reports as /learn-kana
             const trackPath = currentPath.startsWith('/learn-kana')
                 ? currentPath
                 : `/learn-kana${currentPath === '/' ? '' : currentPath}`;
@@ -20,5 +19,10 @@ export default function Layout() {
         }
     }, [location]);
 
-    return <Outlet />;
+    return (
+        <>
+            <ThemeToggle />
+            <Outlet />
+        </>
+    );
 }

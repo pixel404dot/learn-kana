@@ -2,12 +2,19 @@
 
 ![Deployment Status](https://github.com/Eldoprano/learn-kana/actions/workflows/node.js.yml/badge.svg)
 
-This website is still under occasional development~
-You can check how it looks so far here:
-- [GitHub pages](https://eldoprano.github.io/learn-kana/)
-- [Cloudflare pages](https://learn-kana.pages.dev/)
+Fork of [Eldoprano/learn-kana](https://github.com/Eldoprano/learn-kana) with **dark mode** and load-time optimizations.
 
 A website where you will be shoved Kana characters up to your brain, until you get them all.
+
+## This fork
+
+- **Dark mode** — Light / Dark / System toggle (top-left). Preference is saved locally and applied before first paint (no flash).
+- **Smaller download** — Japanese display fonts load from Google Fonts instead of shipping ~40MB of local TTF/OTF files. The first visit is much faster; unused handwritten faces stay on the CDN.
+- **Theme tokens** — Colors go through CSS variables so both palettes stay consistent across the menu, practice screen, and stats modal.
+
+Original live demos (upstream):
+- [GitHub pages](https://eldoprano.github.io/learn-kana/)
+- [Cloudflare pages](https://learn-kana.pages.dev/)
 
 ## Ideas to implement
 - User can choose which Kana groups to practice on. ✅
