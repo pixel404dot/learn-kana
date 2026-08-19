@@ -146,17 +146,19 @@ export default function UserGameScoreWindow(props) {
     }
 
     function handleTryProblematicsClick() {
-        const problematicChars = getProblematicCharactersForFilter();
+        let problematicChars = getProblematicCharactersForFilter();
+
+        // Fall back to this session's slowest answers if long-term data is thin
+        if (problematicChars.length === 0) {
+            problematicChars = getTopNProblematicKanas(8).map((row) => row.kana);
+        }
 
         if (problematicChars.length === 0) {
-            alert("No problematic characters found! You're doing great! 🎉");
+            alert("No weak kana yet — play a bit more and they'll show up here.");
             return;
         }
 
-        // Store the problematic characters filter in localStorage
         localStorage.setItem('problematicKanasFilter', JSON.stringify(problematicChars));
-
-        // Reload to start a new game with filtered characters
         window.location.reload(false);
     }
 
@@ -176,15 +178,21 @@ export default function UserGameScoreWindow(props) {
                     </p>
                 )}
             </div>
-            <div className='inGameUserGameScoreWindow_stats_problematicKanas'>
-                <p>Slow Kanas:</p>
-                <div>
+            <div className='weak-kana-section'>
+                <h3>Weak kana practice</h3>
+                <div className='weak-kana-chips'>
                     {
-                        getTopNProblematicKanas(5).map((kana, index) => {
-                            return <p className='problematicKanasElement' key={'problematicKanasElement-'+{index}}>{kana.kana + ': ' + kana.averageResponseTime.toFixed(2)}</p>
-                        })
+                        getTopNProblematicKanas(5).map((row, index) => (
+                            <div className='weak-kana-chip' key={'weak-'+index}>
+                                <span className='char'>{row.kana}</span>
+                                <span className='time'>{row.averageResponseTime.toFixed(2)}s</span>
+                            </div>
+                        ))
                     }
                 </div>
+                <p style={{margin:'0 0 0.75em', fontSize:'0.95em', opacity:0.9}}>
+                    Drill the characters that slowed you down this session.
+                </p>
             </div>
         </div>
     } else {
@@ -206,19 +214,17 @@ export default function UserGameScoreWindow(props) {
                     </div>
                     {userStatsElement}
                     <div className='inGameUserGameScoreWindow_buttons'>
-                        {/* Changing to window.location because of some react problems
-                            (game-mode-word change wasn't being respected)
-                             <Link to='/learn-kana'> */}
-                            <button onClick={() => {
-                                localStorage.removeItem('problematicKanasFilter');
-                                window.location.href = "/learn-kana#game-menu-title";
-                            }}>Back to Main Menu</button>
-                        {/* </Link> */}
-                        <button onClick={handleTryProblematicsClick}>Try Problematics</button>
+                        <button className='weak-kana-cta' onClick={handleTryProblematicsClick}>
+                            Practice weak kana
+                        </button>
                         <button onClick={() => {
                             localStorage.removeItem('problematicKanasFilter');
                             window.location.reload(false);
-                        }}>Play Again</button>
+                        }}>Play again</button>
+                        <button onClick={() => {
+                            localStorage.removeItem('problematicKanasFilter');
+                            window.location.href = "/learn-kana#game-menu-title";
+                        }}>Back to menu</button>
                     </div>
                 </div>            
             </div>
